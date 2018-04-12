@@ -1,0 +1,18 @@
+body {
+  color: red;
+  background-color: gray;
+  width: 200px;
+  border: 2px solid black;
+}
+
+h1 {
+  color: green;
+}
+
+li {
+    font-size: 200%;
+}
+
+p {
+  color: black;
+}
