@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const scss = require('gulp-sass');
 const minifyHtml = require('gulp-minify-html');
 const minifyCss = require('gulp-clean-css');
 const minifyJs = require('gulp-uglify');
@@ -6,7 +7,7 @@ const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
 var src = {
-    css: 'css/*.css',
+    scss: 'scss/*.scss',
     js: 'js/*.js'
 }
 
@@ -16,7 +17,8 @@ var dest = {
 }
 
 gulp.task('css', function() {
-    return gulp.src(src.css)
+    return gulp.src(src.scss)
+        .pipe(scss());
         .pipe(minifyCss())
         .pipe(gulp.dest(dest.css))
         .pipe(reload({stream: true}))
@@ -30,7 +32,7 @@ gulp.task('js', function() {
 })
 
 gulp.task('watch', ['server', 'css', 'js'], function() {
-    gulp.watch(src.css, ['css']);
+    gulp.watch(src.scss, ['css']);
     gulp.watch('*.html', reload);
     gulp.watch(src.js, ['js']);
 })
