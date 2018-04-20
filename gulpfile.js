@@ -19,6 +19,7 @@ var dest = {
 gulp.task('css', function() {
     return gulp.src(src.scss)
         .pipe(scss())
+	.pipe(gulp.dest('scss/'))
         .pipe(minifyCss())
         .pipe(gulp.dest(dest.css))
         .pipe(reload({stream: true}))
